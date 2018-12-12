@@ -1,4 +1,4 @@
-package org.knowledgeworks.pt
+package com.flowkode.mailvalidator
 
 import com.google.gson.Gson
 import spark.ResponseTransformer

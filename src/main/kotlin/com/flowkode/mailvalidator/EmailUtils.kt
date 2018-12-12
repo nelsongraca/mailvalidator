@@ -1,4 +1,4 @@
-package org.knowledgeworks.pt
+package com.flowkode.mailvalidator
 
 /*
  * Copyright 2018 by KnowledgeWorks. All rights reserved.

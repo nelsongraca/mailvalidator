@@ -1,4 +1,4 @@
-package org.knowledgeworks.pt
+package com.flowkode.mailvalidator
 
 import com.fasterxml.jackson.annotation.JsonCreator
 import com.fasterxml.jackson.annotation.JsonProperty
