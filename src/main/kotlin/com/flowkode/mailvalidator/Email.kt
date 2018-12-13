@@ -1,21 +1,26 @@
 package com.flowkode.mailvalidator
 
-import com.fasterxml.jackson.annotation.JsonCreator
-import com.fasterxml.jackson.annotation.JsonProperty
+class Email(rawEmail: String) {
+    companion object {
+        val regex = "@".toRegex()
+    }
 
-class Email @JsonCreator
-constructor(@param:JsonProperty("address") var address: String,
-            @param:JsonProperty("domain") var domain: String,
-            @param:JsonProperty("server") var server: String,
-            @param:JsonProperty("valid") var valid: Boolean){
+    val fullAddress: String
 
+    val domain: String
 
-    override fun toString(): String {
-        return ("Email{"
-                + "address:" + address
-                + ", domain:" + domain
-                + ", server:" + server
-                + ", valid:" + valid
-                + '}'.toString())
+    val localPart: String
+
+    init {
+        val chunks = rawEmail.split(regex)
+                .dropLastWhile { it.isEmpty() }
+                .toTypedArray()
+
+        if (chunks.size != 2) {
+            throw InvalidEmailException()
+        }
+        fullAddress = rawEmail
+        localPart = chunks[0]
+        domain = chunks[1]
     }
 }
